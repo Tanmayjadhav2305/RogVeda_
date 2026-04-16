@@ -12,22 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // ─── Middleware ───────────────────────────────────────────────────────────────
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (mobile apps, curl, Postman)
-    if (!origin) return callback(null, true);
-    const allowed = [
-      /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/,  // any localhost port
-      /\.vercel\.app$/,                               // any vercel.app subdomain
-      /\.onrender\.com$/,                             // render.com (self-calls)
-    ];
-    if (allowed.some(re => re.test(origin))) {
-      return callback(null, true);
-    }
-    callback(new Error(`CORS blocked: ${origin}`));
-  },
-  credentials: true,
-}));
+app.use(cors()); // Allow all origins
 app.use(express.json());
 
 // ─── Routes ───────────────────────────────────────────────────────────────────
