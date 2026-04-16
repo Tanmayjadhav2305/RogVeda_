@@ -19,7 +19,7 @@ export default function Search() {
       try {
         setLoading(true);
         setError(null);
-        const res = await API.get('/api/hospitals');
+        const res = await API.get('/hospitals');
         setHospitals(res.data.data);
       } catch (err) {
         console.error(err);

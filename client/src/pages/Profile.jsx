@@ -25,7 +25,7 @@ export default function Profile() {
   async function fetchTransactions() {
     try {
       const token = localStorage.getItem('patient_token');
-      const res = await API.get('/api/patients/me/transactions', {
+      const res = await API.get('/patients/me/transactions', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTransactions(res.data.data);

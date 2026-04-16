@@ -22,7 +22,7 @@ export default function VendorLogin() {
     setLoading(true);
     setError('');
     try {
-      const res = await API.post('/api/vendor/login', { username, password });
+      const res = await API.post('/vendor/login', { username, password });
       const { token, vendor } = res.data.data;
       localStorage.setItem('vendor_token', token);
       localStorage.setItem('vendor_name', vendor.name);

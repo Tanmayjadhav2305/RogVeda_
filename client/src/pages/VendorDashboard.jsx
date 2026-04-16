@@ -31,7 +31,7 @@ export default function VendorDashboard() {
     setLoading(true);
     setError('');
     try {
-      const res = await API.get('/api/vendor/bookings');
+      const res = await API.get('/vendor/bookings');
       setBookings(res.data.data);
     } catch (err) {
       if (err.response?.status === 401) {
@@ -56,7 +56,7 @@ export default function VendorDashboard() {
   async function handleCompleteTask(bookingId, taskIndex) {
     setUpdatingTask({ bookingId, taskIndex });
     try {
-      const res = await API.patch(`/api/vendor/tasks/${bookingId}`, { taskIndex });
+      const res = await API.patch(`/vendor/tasks/${bookingId}`, { taskIndex });
       const { tasks, status } = res.data.data;
       setBookings((prev) =>
         prev.map((b) =>

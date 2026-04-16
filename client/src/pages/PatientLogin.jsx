@@ -24,7 +24,7 @@ export default function PatientLogin() {
     setLoading(true);
     setError('');
     try {
-      const res = await API.post('/api/patients/login', { email, password });
+      const res = await API.post('/patients/login', { email, password });
       const { token, patient } = res.data.data;
       localStorage.setItem('patient_token', token);
       setPatient(patient);

@@ -23,7 +23,7 @@ export default function PatientRegister() {
     setLoading(true);
     setError('');
     try {
-      const res = await API.post('/api/patients/register', form);
+      const res = await API.post('/patients/register', form);
       const { token, patient } = res.data.data;
       localStorage.setItem('patient_token', token);
       setPatient(patient);

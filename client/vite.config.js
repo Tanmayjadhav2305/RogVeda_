@@ -44,7 +44,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         runtimeCaching: [
           {
-            urlPattern: /^http:\/\/localhost:3001\/api\//,
+            urlPattern: /^https:\/\/rogveda\.onrender\.com\/api\//,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'rogveda-api-cache',

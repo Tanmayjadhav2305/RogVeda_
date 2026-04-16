@@ -31,7 +31,7 @@ export default function MyBookings() {
     setError('');
     try {
       const token = localStorage.getItem('patient_token');
-      const res = await API.get('/api/patients/me/bookings', {
+      const res = await API.get('/patients/me/bookings', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBookings(res.data.data);

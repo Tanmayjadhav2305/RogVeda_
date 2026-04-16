@@ -30,7 +30,7 @@ export default function Booking() {
     setBookingError('');
     try {
       const token = localStorage.getItem('patient_token');
-      const res = await API.post('/api/bookings', {
+      const res = await API.post('/bookings', {
         patientId: patient.patientId,
         patientName: patient.name,
         hospitalId: pendingBooking.hospitalId,
