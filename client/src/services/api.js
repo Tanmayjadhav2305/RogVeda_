@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: import.meta.env.VITE_API_URL || 'https://rogveda.onrender.com/api',
   timeout: 15000,
   headers: { 'Content-Type': 'application/json' },
 });
