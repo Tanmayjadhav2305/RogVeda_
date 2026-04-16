@@ -72,11 +72,11 @@ export default function VendorDashboard() {
 
   // Stats
   const stats = {
-    total:      bookings.length,
-    confirmed:  bookings.filter(b => b.status === 'Confirmed').length,
-    inProgress: bookings.filter(b => b.status === 'In Progress').length,
-    completed:  bookings.filter(b => b.status === 'Completed').length,
-    revenue:    bookings.reduce((s, b) => s + (b.priceUSD || 0), 0),
+    total:      bookings?.length || 0,
+    confirmed:  bookings?.filter(b => b.status === 'Confirmed').length || 0,
+    inProgress: bookings?.filter(b => b.status === 'In Progress').length || 0,
+    completed:  bookings?.filter(b => b.status === 'Completed').length || 0,
+    revenue:    bookings?.reduce((s, b) => s + (b.priceUSD || 0), 0) || 0,
   };
 
   return (
@@ -202,7 +202,7 @@ export default function VendorDashboard() {
         )}
 
         {/* Empty State */}
-        {!loading && !error && bookings.length === 0 && (
+        {!loading && !error && (!bookings || bookings.length === 0) && (
           <div className="empty-state">
             <div className="empty-state__icon">📋</div>
             <h3>No bookings yet</h3>
@@ -211,7 +211,7 @@ export default function VendorDashboard() {
         )}
 
         {/* Bookings Table */}
-        {!loading && bookings.length > 0 && (
+        {!loading && bookings && bookings.length > 0 && (
           <div className="vdash-bookings">
             <div className="booking-table-header">
               <span>Patient</span>

@@ -20,7 +20,7 @@ export default function Search() {
         setLoading(true);
         setError(null);
         const res = await API.get('/hospitals');
-        setHospitals(res.data.data);
+        setHospitals(res.data?.data || []);
       } catch (err) {
         console.error(err);
         setError('Unable to load hospitals. Please check your connection and try again.');
@@ -90,7 +90,7 @@ export default function Search() {
           <div className="results-header">
             <div>
               <h2 className="results-title">
-                {loading ? 'Loading results…' : `${hospitals.length} hospitals found`}
+                {loading ? 'Loading results…' : `${hospitals?.length || 0} hospitals found`}
               </h2>
               <p className="results-subtitle">Total Knee Replacement · Delhi, India</p>
             </div>
@@ -109,7 +109,7 @@ export default function Search() {
             </div>
           )}
 
-          {!loading && !error && hospitals.length === 0 && (
+          {!loading && !error && (!hospitals || hospitals.length === 0) && (
             <div className="empty-state">
               <div className="empty-state__icon">🏥</div>
               <h3>No hospitals found</h3>
@@ -117,7 +117,7 @@ export default function Search() {
             </div>
           )}
 
-          {!loading && !error && hospitals.length > 0 && (
+          {!loading && !error && hospitals && hospitals.length > 0 && (
             <div className="results-list">
               {hospitals.map((hospital, i) => (
                 <HospitalCard key={hospital._id} hospital={hospital} index={i} />
