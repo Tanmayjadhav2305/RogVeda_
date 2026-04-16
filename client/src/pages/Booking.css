@@ -1,0 +1,239 @@
+.booking-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--clr-bg);
+}
+
+.booking-main {
+  flex: 1;
+  padding: var(--space-xl) var(--space-lg);
+  /* Bottom safe area for iPhone home bar */
+  padding-bottom: max(var(--space-xl), env(safe-area-inset-bottom));
+}
+
+.booking-back {
+  margin-bottom: var(--space-xl);
+}
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+/* ─── Summary ──────────────────────────────────────────────── */
+.booking-summary {
+  padding: var(--space-xl);
+}
+
+.booking-summary__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.booking-summary__title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--clr-text);
+}
+
+.booking-detail { display: flex; flex-direction: column; gap: var(--space-md); }
+
+.booking-detail__row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--clr-surface-2);
+  border-radius: var(--radius-md);
+}
+
+.detail-icon { color: var(--clr-primary); margin-top: 2px; flex-shrink: 0; }
+
+.detail-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.15rem;
+}
+
+.detail-value {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--clr-text);
+}
+
+.detail-value--price {
+  font-size: 1.35rem;
+  background: var(--grad-price);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.detail-sub {
+  font-size: 0.72rem;
+  color: var(--clr-text-muted);
+  margin-top: 0.1rem;
+}
+
+.booking-accreditations {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.bnpl-banner {
+  margin-top: var(--space-md);
+  flex-direction: row;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.bnpl-title { font-weight: 700; margin-bottom: 0.3rem; font-size: 0.9rem; }
+
+.text-danger { color: var(--clr-danger) !important; }
+.text-success { color: var(--clr-success) !important; }
+
+.secure-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-size: 0.7rem;
+  color: var(--clr-text-faint);
+  margin-top: var(--space-sm);
+}
+
+/* ─── Auth / Confirm Panels ───────────────────────────────── */
+.auth-panel,
+.confirm-panel {
+  padding: var(--space-xl);
+}
+
+.auth-panel__title,
+.confirm-panel__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+.auth-panel__subtitle,
+.confirm-panel__subtitle {
+  color: var(--clr-text-muted);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.auth-form { display: flex; flex-direction: column; gap: var(--space-lg); }
+
+/* New: when user is not logged in, show login/register buttons */
+.auth-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.auth-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--clr-text-muted);
+  line-height: 1.5;
+  margin-top: var(--space-xs);
+}
+
+.auth-note strong { color: var(--clr-success); }
+
+/* ─── Wallet Preview ──────────────────────────────────────── */
+.wallet-preview {
+  background: var(--clr-surface-2);
+  border: 1px solid var(--clr-border-2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.wallet-preview__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--clr-text-muted);
+}
+
+.wallet-preview__row strong { color: var(--clr-text); font-weight: 600; }
+.wallet-preview__divider { height: 1px; background: var(--clr-border); margin: 2px 0; }
+.wallet-preview__row--total { font-size: 0.95rem; color: var(--clr-text); font-weight: 600; }
+
+/* ─── Coordinator Note ────────────────────────────────────── */
+.coordinator-note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(139,92,246,0.08);
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .booking-main {
+    padding: var(--space-md);
+    padding-bottom: max(var(--space-xl), env(safe-area-inset-bottom));
+  }
+
+  .booking-back { margin-bottom: var(--space-md); }
+
+  .booking-summary,
+  .auth-panel,
+  .confirm-panel {
+    padding: var(--space-md);
+  }
+
+  .booking-summary__title,
+  .auth-panel__title,
+  .confirm-panel__title {
+    font-size: 1.25rem;
+  }
+
+  .booking-detail__row {
+    padding: var(--space-sm);
+  }
+
+  /* On mobile, show summary collapsed at top, action panel below */
+  .booking-grid { gap: var(--space-md); }
+
+  .bnpl-banner { font-size: 0.82rem; }
+
+  /* Make form inputs larger for easier typing on mobile */
+  .form-control {
+    font-size: 16px; /* prevents iOS zoom on focus */
+    padding: 0.75rem 0.9rem;
+  }
+}

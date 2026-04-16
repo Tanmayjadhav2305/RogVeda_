@@ -1,0 +1,324 @@
+.hcard {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  background: var(--grad-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: transform var(--trans-med), box-shadow var(--trans-med), border-color var(--trans-med);
+}
+
+.hcard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+  border-color: var(--clr-border-2);
+}
+
+/* Touch-friendly: remove hover lift on touch devices */
+@media (hover: none) {
+  .hcard:hover { transform: none; box-shadow: var(--shadow-card); }
+  .hcard:active { transform: scale(0.99); }
+}
+
+/* ─── Image Panel ─────────────────────────────────────────── */
+.hcard__image {
+  position: relative;
+  overflow: hidden;
+  min-height: 240px;
+  background: #0a1628;
+  display: flex;
+  align-items: stretch;
+}
+
+/* Real photo */
+.hcard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.hcard:hover .hcard__img { transform: scale(1.04); }
+
+/* Name overlay on real photo */
+.hcard__img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-md) var(--space-md) var(--space-sm);
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+}
+
+.hcard__img-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Fallback gradient (shown when no image/image fails) */
+.hcard__img-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.hcard__image-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.hcard__hospital-initial {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-lg);
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-family: var(--font-serif);
+  color: rgba(255,255,255,0.9);
+}
+
+.hcard__hospital-abbr {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  max-width: 110px;
+  line-height: 1.4;
+}
+
+.hcard__badges {
+  position: absolute;
+  bottom: var(--space-md);
+  left: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* ─── Content Panel ─────────────────────────────────────────── */
+.hcard__body {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.hcard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.hcard__name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--clr-text);
+  margin-bottom: var(--space-xs);
+  line-height: 1.2;
+}
+
+.hcard__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.hcard__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--clr-text-muted);
+}
+
+.star-icon { color: #f59e0b; }
+
+.hcard__lowest-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.6rem;
+  background: linear-gradient(90deg, rgba(16,185,129,0.2), rgba(6,182,212,0.2));
+  border: 1px solid rgba(16,185,129,0.4);
+  border-radius: var(--radius-full);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #10b981;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.hcard__procedure {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-md);
+  background: rgba(59,130,246,0.06);
+  border: 1px solid rgba(59,130,246,0.15);
+  border-radius: var(--radius-md);
+}
+
+.procedure-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.procedure-name {
+  font-size: 0.82rem;
+  color: var(--clr-text);
+  font-weight: 500;
+}
+
+.hcard__selectors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────── */
+.hcard__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: auto;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--clr-border);
+}
+
+.hcard__price-label {
+  font-size: 0.68rem;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+}
+
+.hcard__price {
+  font-size: 1.7rem;
+  font-weight: 800;
+  background: var(--grad-price);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  transition: all var(--trans-med);
+}
+
+.hcard__bnpl {
+  font-size: 0.68rem;
+  color: var(--clr-success);
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.hcard__cta {
+  flex-shrink: 0;
+  min-width: 120px;
+  /* Larger tap target */
+  min-height: 44px;
+}
+
+/* ─── Tablet ─────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hcard { grid-template-columns: 160px 1fr; }
+  .hcard__image { min-height: 200px; }
+}
+
+/* ─── Mobile (stack vertically) ──────────────────────────────── */
+@media (max-width: 640px) {
+  .hcard {
+    grid-template-columns: 1fr;
+  }
+
+  /* Image becomes a horizontal banner on mobile */
+  .hcard__image {
+    min-height: 130px;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: var(--space-md) var(--space-lg);
+    gap: var(--space-md);
+  }
+
+  .hcard__image-content {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .hcard__hospital-initial {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .hcard__hospital-abbr {
+    text-align: left;
+    max-width: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* Move badges inline with header */
+  .hcard__badges {
+    position: static;
+    flex-direction: row;
+    margin-left: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .hcard__body { padding: var(--space-md); gap: var(--space-sm); }
+
+  .hcard__name { font-size: 1.15rem; }
+
+  .hcard__selectors {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .hcard__footer {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hcard__price { font-size: 1.4rem; }
+
+  .hcard__cta {
+    min-width: 110px;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .hcard__footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hcard__cta { width: 100%; }
+}

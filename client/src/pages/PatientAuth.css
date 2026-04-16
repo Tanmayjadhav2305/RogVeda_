@@ -1,0 +1,159 @@
+/* ─── Shared styles for PatientLogin & PatientRegister ─────── */
+
+.pauth-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  padding-bottom: max(var(--space-lg), env(safe-area-inset-bottom));
+  position: relative;
+  overflow: hidden;
+}
+
+.pauth-bg {
+  position: fixed;
+  inset: 0;
+  background: var(--grad-hero);
+  z-index: 0;
+}
+
+.pauth-bg::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+}
+
+.pauth-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
+}
+
+.pauth-card {
+  width: 100%;
+  max-width: 440px;
+  padding: var(--space-2xl) var(--space-xl);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ─── Back Link ───────────────────────────────────────────── */
+.pauth-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  transition: color var(--trans-fast);
+}
+.pauth-back:hover { color: var(--clr-text); }
+
+/* ─── Logo ────────────────────────────────────────────────── */
+.pauth-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 800;
+  justify-content: center;
+}
+
+.pauth-logo__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--grad-btn);
+  border-radius: var(--radius-md);
+  color: white;
+  box-shadow: var(--shadow-btn);
+}
+
+/* ─── Header ──────────────────────────────────────────────── */
+.pauth-header { text-align: center; display: flex; flex-direction: column; gap: 0.35rem; }
+
+.pauth-title {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  color: var(--clr-text);
+}
+
+.pauth-subtitle {
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  line-height: 1.5;
+}
+
+/* ─── Wallet Bonus ────────────────────────────────────────── */
+.pauth-bonus {
+  text-align: center;
+  font-size: 0.82rem;
+  padding: 0.6rem var(--space-md);
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.25);
+  border-radius: var(--radius-md);
+  color: var(--clr-text-muted);
+  line-height: 1.5;
+}
+.pauth-bonus strong { color: var(--clr-success); }
+
+/* ─── Form ────────────────────────────────────────────────── */
+.pauth-form { display: flex; flex-direction: column; gap: var(--space-md); }
+
+.pauth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.pauth-pass-wrap { position: relative; }
+
+.pauth-toggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: var(--clr-text-muted);
+  transition: color var(--trans-fast);
+}
+.pauth-toggle:hover { color: var(--clr-text); }
+
+/* ─── Footer ──────────────────────────────────────────────── */
+.pauth-switch {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+}
+
+.pauth-link {
+  color: var(--clr-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ─── Mobile ──────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .pauth-card { padding: var(--space-lg) var(--space-md); }
+  .pauth-title { font-size: 1.6rem; }
+  .pauth-grid { grid-template-columns: 1fr; }
+  /* iOS: prevent zoom on focus */
+  .form-control { font-size: 16px; }
+}

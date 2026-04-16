@@ -1,0 +1,125 @@
+/* ─── Mobile Bottom Nav ───────────────────────────────────── */
+/* Only visible on mobile — completely hidden on desktop */
+
+.mobile-bottom-nav {
+  display: none; /* hidden on desktop */
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background: rgba(10, 13, 26, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    /* iPhone home indicator */
+    padding-bottom: env(safe-area-inset-bottom);
+    align-items: stretch;
+  }
+
+  .mnav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 0 8px;
+    position: relative;
+    color: var(--clr-text-muted);
+    transition: color var(--trans-fast);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 56px;
+    text-decoration: none;
+  }
+
+  .mnav-item:active { opacity: 0.7; }
+
+  .mnav-item--active {
+    color: var(--clr-primary);
+  }
+
+  /* Active top indicator bar */
+  .mnav-item--active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 2px;
+    background: var(--grad-btn);
+    border-radius: 0 0 4px 4px;
+  }
+
+  .mnav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    transition: transform var(--trans-fast);
+  }
+
+  .mnav-item--active .mnav-icon {
+    transform: translateY(-1px);
+  }
+
+  .mnav-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  /* Patient avatar in tab */
+  .mnav-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--grad-btn);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.4);
+    transition: transform var(--trans-fast);
+  }
+
+  .mnav-item--active .mnav-avatar {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 2px var(--clr-primary);
+  }
+
+  /* Red dot for "sign in" nudge */
+  .mnav-dot {
+    position: absolute;
+    top: 8px;
+    right: calc(50% - 16px);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--clr-danger);
+    border: 1.5px solid rgba(10,13,26,0.97);
+    animation: pulse-ring 2s ease-out infinite;
+  }
+}
+
+/* Push page content above nav */
+@media (max-width: 768px) {
+  .search-page,
+  .mybookings-page,
+  .profile-page,
+  .booking-page,
+  .success-page {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  }
+}

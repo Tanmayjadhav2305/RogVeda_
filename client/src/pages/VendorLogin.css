@@ -1,0 +1,140 @@
+.vlogin-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.vlogin-bg {
+  position: fixed;
+  inset: 0;
+  background: var(--grad-hero);
+  z-index: 0;
+}
+
+.vlogin-bg::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+}
+
+.vlogin-card {
+  width: 100%;
+  max-width: 420px;
+  padding: var(--space-2xl);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.vlogin-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  transition: color var(--trans-fast);
+}
+.vlogin-back:hover { color: var(--clr-text); }
+
+.vlogin-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.vlogin-logo__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--grad-btn);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-size: 1.1rem;
+  font-weight: 900;
+  box-shadow: var(--shadow-btn);
+}
+
+.vlogin-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.vlogin-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.3rem 0.75rem;
+  background: rgba(59,130,246,0.1);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #60a5fa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.vlogin-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--clr-text);
+}
+
+.vlogin-subtitle {
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+}
+
+.vlogin-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.vlogin-pass-wrap { position: relative; }
+
+.vlogin-pass-toggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: var(--clr-text-muted);
+  transition: color var(--trans-fast);
+}
+
+.vlogin-pass-toggle:hover { color: var(--clr-text); }
+
+.vlogin-hint {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--clr-text-muted);
+}
+
+.vlogin-hint code {
+  background: var(--clr-surface-2);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  color: var(--clr-accent);
+  font-size: 0.8rem;
+}
